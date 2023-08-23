@@ -3,6 +3,7 @@ import { Button, Card, Spinner } from 'react-bootstrap';
 import { BsTrash3 } from 'react-icons/bs';
 import { WorkoutType } from '../utils/types';
 import { useWorkoutContext } from '../hooks/useWorkoutContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 type WorkoutProps = {
   workout: WorkoutType;
@@ -11,14 +12,19 @@ type WorkoutProps = {
 const Workout = ({ workout }: WorkoutProps) => {
   const { dispatch } = useWorkoutContext();
   const [loading, setLoading] = useState(false);
+  const { user } = useAuthContext();
+  console.log('single', workout);
   const handleDelete = () => {
     setLoading(true);
-    fetch('http://localhost:8080/workout/' + workout._id, {
+    fetch('http://localhost:8080/api/workout/' + workout._id, {
       method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${user?.token}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
-        dispatch({ type: 'WORKOUT_DELETED', payload: data });
+        dispatch({ type: 'WORKOUT_DELETED', payload: data.workout });
         setLoading(false);
       });
   };

@@ -1,7 +1,7 @@
 import React from 'react';
 import Workout from './Workout';
 import { WorkoutType } from '../utils/types';
-import { Col, Row } from 'react-bootstrap';
+import { Alert, Col, Row } from 'react-bootstrap';
 
 type WorkoutsProps = {
   workouts: WorkoutType[];
@@ -21,7 +21,7 @@ const Workouts = ({ workouts }: WorkoutsProps) => {
             ))
           ) : (
             <div>
-              <h2>You have no workouts added!</h2>
+              <Alert variant='info'>You have no workouts added!</Alert>
             </div>
           )}
         </Col>

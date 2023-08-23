@@ -10,6 +10,7 @@ import {
 import { UseFormReturn, useForm } from 'react-hook-form';
 import { WorkoutFormDataType } from '../utils/types';
 import { useWorkoutContext } from '../hooks/useWorkoutContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const WorkoutForm = () => {
   const { dispatch } = useWorkoutContext();
@@ -20,22 +21,27 @@ const WorkoutForm = () => {
     reset,
     formState: { errors, touchedFields, dirtyFields },
   }: UseFormReturn<WorkoutFormDataType> = useForm();
-
+  const { user } = useAuthContext();
   const onSubmit = (formValues: WorkoutFormDataType) => {
     console.log('form values', formValues);
     setLoading(true);
-    fetch('http://localhost:8080/workout', {
+    fetch('http://localhost:8080/api/workout', {
       method: 'POST',
       body: JSON.stringify(formValues),
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${user?.token}`,
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        dispatch({ type: 'WORKOUT_ADDED', payload: data });
-        reset();
+        if (data.workout) {
+          dispatch({ type: 'WORKOUT_ADDED', payload: data.workout });
+          reset();
+        }
         setLoading(false);
+
+        console.log('res', data);
       });
   };
 
@@ -43,7 +49,9 @@ const WorkoutForm = () => {
     <section className=''>
       <Card>
         <Card.Header>
-          <h2 className='display-6 text-primary '>Add a New Workout</h2>
+          <h2 className='display-6 text-primary fw-semibold'>
+            Add a New Workout
+          </h2>
         </Card.Header>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Card.Body>

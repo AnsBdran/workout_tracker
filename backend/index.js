@@ -2,6 +2,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
 const workoutRoutes = require('./routes/workout');
+const userRoutes = require('./routes/user');
 const cors = require('cors');
 
 const app = express();
@@ -20,4 +21,5 @@ mongoose
     console.log('there is something got wrong', error);
   });
 
-app.use('/workout', workoutRoutes);
+app.use('/api/workout', workoutRoutes);
+app.use('/user', userRoutes);

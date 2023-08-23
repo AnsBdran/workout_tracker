@@ -6,7 +6,10 @@ import Container from 'react-bootstrap/Container';
 
 const MainLayout = () => {
   return (
-    <>
+    <div
+      className='d-flex flex-column justify-content-between '
+      style={{ minHeight: '100vh' }}
+    >
       <Header />
       <main>
         <Container fluid='xl'>
@@ -14,7 +17,7 @@ const MainLayout = () => {
         </Container>
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

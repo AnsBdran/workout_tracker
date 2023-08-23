@@ -16,6 +16,8 @@ export type WorkoutFormDataType = {
   reps: number;
 };
 
+export type UserType = { email: string; token: string };
+
 // WorkoutContext types
 
 type SetInitialWorkouts = {
@@ -41,4 +43,9 @@ export type WorkoutActionsType =
 export type WorkoutContextType = {
   workouts: WorkoutType[];
   dispatch: React.Dispatch<WorkoutActionsType>;
+};
+
+export type UserSignFormValuesType = {
+  email: string;
+  password: string;
 };

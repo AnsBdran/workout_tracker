@@ -4,6 +4,7 @@ import {
   WorkoutContextType,
   WorkoutType,
 } from '../utils/types';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 type WorkoutContextProviderPropsType = {
   children: ReactNode;
@@ -16,7 +17,7 @@ const workoutReducer = (
 ) => {
   switch (action.type) {
     case 'SET_INITIAL_WORKOUTS':
-      return [...action.payload];
+      return action.payload;
     case 'WORKOUT_ADDED':
       return [...state, action.payload];
     case 'WORKOUT_DELETED':
@@ -33,14 +34,6 @@ const WorkoutContextProvider = ({
   children,
 }: WorkoutContextProviderPropsType) => {
   const [workouts, dispatch] = useReducer(workoutReducer, []);
-
-  useEffect(() => {
-    fetch('http://localhost:8080/workout')
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: 'SET_INITIAL_WORKOUTS', payload: data });
-      });
-  }, []);
 
   return (
     <WorkoutContext.Provider value={{ workouts, dispatch }}>
