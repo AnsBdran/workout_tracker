@@ -10,13 +10,16 @@ export const useSignup = () => {
     setLoading(true);
     setError(null);
 
-    const res = await fetch('http://localhost:8080/user/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    const res = await fetch(
+      'https://workout-tracker-pbx9.onrender.com/user/signup',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      }
+    );
     const data = await res.json();
 
     if (data.error) {

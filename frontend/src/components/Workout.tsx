@@ -16,12 +16,15 @@ const Workout = ({ workout }: WorkoutProps) => {
   console.log('single', workout);
   const handleDelete = () => {
     setLoading(true);
-    fetch('http://localhost:8080/api/workout/' + workout._id, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${user?.token}`,
-      },
-    })
+    fetch(
+      'https://workout-tracker-pbx9.onrender.com/api/workout/' + workout._id,
+      {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         dispatch({ type: 'WORKOUT_DELETED', payload: data.workout });

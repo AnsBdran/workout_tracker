@@ -11,7 +11,7 @@ const Home = () => {
   console.log('the ', workouts);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/workout', {
+    fetch('https://workout-tracker-pbx9.onrender.com/api/workout', {
       headers: {
         Authorization: `Bearer ${user?.token}`,
       },

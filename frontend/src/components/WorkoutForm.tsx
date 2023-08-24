@@ -25,7 +25,7 @@ const WorkoutForm = () => {
   const onSubmit = (formValues: WorkoutFormDataType) => {
     console.log('form values', formValues);
     setLoading(true);
-    fetch('http://localhost:8080/api/workout', {
+    fetch('https://workout-tracker-pbx9.onrender.com/api/workout', {
       method: 'POST',
       body: JSON.stringify(formValues),
       headers: {
