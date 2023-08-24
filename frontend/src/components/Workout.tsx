@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Card, Spinner } from 'react-bootstrap';
 import { BsTrash3 } from 'react-icons/bs';
 import { WorkoutType } from '../utils/types';

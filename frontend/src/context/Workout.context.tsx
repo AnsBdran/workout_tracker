@@ -1,10 +1,9 @@
-import { ReactNode, createContext, useEffect, useReducer } from 'react';
+import { ReactNode, createContext, useReducer } from 'react';
 import {
   WorkoutActionsType,
   WorkoutContextType,
   WorkoutType,
 } from '../utils/types';
-import { useAuthContext } from '../hooks/useAuthContext';
 
 type WorkoutContextProviderPropsType = {
   children: ReactNode;

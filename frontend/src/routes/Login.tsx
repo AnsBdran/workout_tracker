@@ -17,7 +17,7 @@ import { RiLockPasswordLine } from 'react-icons/ri';
 const Login = () => {
   const {
     register,
-    formState: { isDirty, errors, touchedFields, dirtyFields },
+    formState: { errors, touchedFields, dirtyFields },
     handleSubmit,
   } = useForm<UserSignFormValuesType>({
     mode: 'onBlur',

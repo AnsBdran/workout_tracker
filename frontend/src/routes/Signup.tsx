@@ -18,7 +18,6 @@ const Signup = () => {
   // useForm hook call
   const {
     register,
-    reset,
     handleSubmit,
     formState: { errors, touchedFields, dirtyFields },
   } = useForm<UserSignFormValuesType>({

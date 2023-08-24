@@ -1,4 +1,3 @@
-import React from 'react';
 import Workout from './Workout';
 import { WorkoutType } from '../utils/types';
 import { Alert, Col, Row } from 'react-bootstrap';

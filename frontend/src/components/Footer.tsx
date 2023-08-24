@@ -1,4 +1,3 @@
-import React from 'react';
 import { Col, Container, Row, Stack } from 'react-bootstrap';
 import { BiHeart } from 'react-icons/bi';
 import { GrGithub } from 'react-icons/gr';
